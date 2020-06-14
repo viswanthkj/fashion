@@ -1,0 +1,28 @@
+import firebase from 'firebase/app';
+import 'firebase/firestore';
+import 'firebase/auth';
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAGrvHs6tvkSTfe3P5C8PI829NdRvTzUes",
+  authDomain: "fashion-796ce.firebaseapp.com",
+  databaseURL: "https://fashion-796ce.firebaseio.com",
+  projectId: "fashion-796ce",
+  storageBucket: "fashion-796ce.appspot.com",
+  messagingSenderId: "1043330253215",
+  appId: "1:1043330253215:web:6c77734ba9a49e6f78fdaa",
+  measurementId: "G-E45ZNGMTQE"
+};
+ 
+firebase.initializeApp(firebaseConfig);
+
+export const auth = firebase.auth();
+
+export const firestore = firebase.firestore();
+
+const provider = new firebase.auth.GoogleAuthProvider();
+
+provider.setCustomParameters({ prompt: 'select_account' });
+
+export const signInWithGoogle = () => auth.signInWithPopup(provider);
+
+export default firebase;
